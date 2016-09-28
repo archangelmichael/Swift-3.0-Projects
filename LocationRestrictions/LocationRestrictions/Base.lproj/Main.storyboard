@@ -18,6 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fkQ-vQ-sca"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ynj-np-PE2">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="7nf-AJ-HdC"/>
@@ -28,13 +29,34 @@
                                     <action selector="onRequestLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iNw-HI-fWW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-lj-OTt">
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Nms-YV-Aaw"/>
+                                    <constraint firstAttribute="width" constant="200" id="Nv3-35-W7v"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="leY-83-UlF"/>
+                                    <constraint firstAttribute="height" constant="60" id="qLv-8S-H1N"/>
+                                </constraints>
+                                <state key="normal" title="GET COUNTRY"/>
+                                <connections>
+                                    <action selector="onCenterToCountry:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTa-Bs-GMB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fkQ-vQ-sca" secondAttribute="bottom" id="0XX-RE-GKq"/>
                             <constraint firstItem="Ynj-np-PE2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Ol-Gc-IRf"/>
-                            <constraint firstItem="Ynj-np-PE2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="emK-Ts-kD9"/>
+                            <constraint firstAttribute="trailing" secondItem="fkQ-vQ-sca" secondAttribute="trailing" id="DPn-8Y-pPF"/>
+                            <constraint firstItem="fkQ-vQ-sca" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Dej-by-6db"/>
+                            <constraint firstItem="Ynj-np-PE2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="O0g-Si-uno"/>
+                            <constraint firstItem="fkQ-vQ-sca" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oW4-pw-xgg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xdw-lj-OTt" secondAttribute="bottom" constant="8" id="sKu-e6-k4Z"/>
+                            <constraint firstItem="xdw-lj-OTt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zVY-us-iCS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="fkQ-vQ-sca" id="2DH-Ai-EpQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

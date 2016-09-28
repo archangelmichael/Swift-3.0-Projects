@@ -13,6 +13,7 @@
 		19E685941D9AA1C600C9CF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19E685931D9AA1C600C9CF0E /* Assets.xcassets */; };
 		19E685971D9AA1C600C9CF0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E685951D9AA1C600C9CF0E /* LaunchScreen.storyboard */; };
 		19E685A01D9AA21F00C9CF0E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19E6859F1D9AA21F00C9CF0E /* CoreLocation.framework */; };
+		19E685A21D9BCFD100C9CF0E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19E685A11D9BCFD100C9CF0E /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		19E685961D9AA1C600C9CF0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19E685981D9AA1C600C9CF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19E6859F1D9AA21F00C9CF0E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		19E685A11D9BCFD100C9CF0E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19E685A21D9BCFD100C9CF0E /* MapKit.framework in Frameworks */,
 				19E685A01D9AA21F00C9CF0E /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +74,7 @@
 		19E6859E1D9AA21F00C9CF0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19E685A11D9BCFD100C9CF0E /* MapKit.framework */,
 				19E6859F1D9AA21F00C9CF0E /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -312,6 +316,7 @@
 				19E6859D1D9AA1C600C9CF0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

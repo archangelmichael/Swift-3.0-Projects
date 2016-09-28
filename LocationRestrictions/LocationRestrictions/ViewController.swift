@@ -8,19 +8,119 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var map: MKMapView!
+    
     let manager = CLLocationManager()
+    var locationUpdated : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         manager.delegate = self
-        manager.desiredAccuracy = 50.0
-        manager.requestWhenInUseAuthorization()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        locationUpdated = true
+        self.map.delegate = self
+    }
+    
+    @IBAction func onCenterToCountry(_ sender: AnyObject) {
+        let status = CLLocationManager.authorizationStatus()
+        if status == CLAuthorizationStatus.denied {
+            self.getLocationFromPhoneRegionSettings()
+        }
+        else if status == CLAuthorizationStatus.notDetermined {
+            self.manager.requestWhenInUseAuthorization()
+        }
+        else {
+            self.locationUpdated = false
+            self.manager.startUpdatingLocation()
+        }
+    }
+    
+    func getLocationFromPhoneRegionSettings() -> Void {
+        let locale = Locale.current as NSLocale
+        let countryCode = locale.object(forKey: NSLocale.Key.countryCode) as? String
+        if countryCode != nil {
+//            let countryName = locale.displayName(forKey: NSLocale.Key.identifier,
+//                                                 value: countryCode!)
+            // print("Country : \(countryName!) \(countryCode)")
+            self.searchForLocation(byCountryName: countryCode!)
+        }
+        else {
+            self.showBanner(message: "Unknown location")
+        }
+    }
+    
+    func searchForLocation(byCountryName : String) -> Void {
+        let countryRequest = MKLocalSearchRequest()
+        countryRequest.naturalLanguageQuery = byCountryName
+        let countrySearch = MKLocalSearch(request: countryRequest)
+        countrySearch.start { (responce, error) in
+            if error != nil || responce == nil {
+                print("No country found")
+            }
+            else {
+                let locations = responce!.mapItems
+                if locations.count > 0 {
+                    let location1 : MKMapItem = locations.first!
+                    let location2 : MKMapItem = locations.last!
+                    
+                    print("Location 1 : \(location1.placemark.country)")
+                    if location1 != location2 {
+                        print("Location 2 : \(location2.placemark.country)")
+                    }
+                    
+                    self.showBanner(message: location1.placemark.country!)
+                    self.map.setCenter(location1.placemark.coordinate,
+                                       animated: false)
+                }
+            }
+        }
+    }
+    
+    func showBanner(message: String) -> Void {
+        let sideOffset : CGFloat = 40
+        let width : CGFloat = self.view.frame.size.width - 2 * sideOffset
+        let topOffset : CGFloat = self.view.frame.size.height / 3
         
+        let banner = UILabel(frame: CGRect(x: sideOffset,
+                                           y: topOffset,
+                                           width: width, height: 100))
+        banner.textAlignment = NSTextAlignment.center
+        banner.font = UIFont.boldSystemFont(ofSize: 30.0)
+        banner.adjustsFontSizeToFitWidth = true
+        banner.numberOfLines = 0
+        banner.textColor = UIColor.red
+        banner.backgroundColor = UIColor.white
+        banner.layer.cornerRadius = 10
+        banner.clipsToBounds = true
+        banner.alpha = 0.0
+        banner.text = message
         
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.addSubview(banner)
+        UIView.animateKeyframes(withDuration: 2.0,
+                                delay: 0.0,
+                                options: UIViewKeyframeAnimationOptions.calculationModeCubic,
+                                animations:
+            {
+                UIView.addKeyframe(withRelativeStartTime: 0,
+                                   relativeDuration: 1/4,
+                                   animations: {
+                    banner.alpha = 1.0
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: 3/4,
+                                   relativeDuration: 1/4,
+                                   animations: {
+                    banner.alpha = 0.0
+                })
+            }) { (complete) in
+                if complete {
+                    banner.removeFromSuperview()
+                }
+        }
     }
     
     @IBAction func onRequestLocation(_ sender: AnyObject) {
@@ -34,14 +134,21 @@ class ViewController: UIViewController {
         else if (status == CLAuthorizationStatus.denied) {
             print("DENIED")
             self.manager.requestWhenInUseAuthorization()
-            UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!,
-                                      options: [:],
-                                      completionHandler: { (finished) in
-                                        
-            })
+            self.showPromptAlert(title: "Location access denied",
+                                 message: "Want to turn it on?",
+                                 closureOk:
+                {
+                    UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!,
+                                              options: [:],
+                                              completionHandler:
+                        { (finished) in
+                    })
+                },
+                                 closureNotOk: nil)
         }
         else {
             print("UNDEFINED")
+            manager.requestWhenInUseAuthorization()
         }
     }
 
@@ -49,6 +156,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+extension ViewController : MKMapViewDelegate {
+    
 }
 
 extension ViewController : CLLocationManagerDelegate {
@@ -87,8 +198,13 @@ extension ViewController : CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let lastLocation = locations.last {
-            print("Last known location \(lastLocation)")
+        let lastLocation = locations.last
+        if lastLocation != nil && self.locationUpdated == false {
+            self.locationUpdated = true
+            self.manager.stopUpdatingLocation()
+            print("Last known location \(lastLocation!)")
+            self.map.setCenter(lastLocation!.coordinate,
+                               animated: false)
         }
     }
     
@@ -102,6 +218,34 @@ extension ViewController : CLLocationManagerDelegate {
         }
         
         alertVC.addAction(actionOk)
+        self.show(alertVC, sender: self)
+    }
+    
+    func showPromptAlert(title: String,
+                         message: String,
+                         closureOk: (() -> Void)?,
+                         closureNotOk: (() -> Void)?) -> Void {
+        let alertVC = UIAlertController(title: title,
+                                        message: message,
+                                        preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionOk = UIAlertAction(title: "OK",
+                                     style: UIAlertActionStyle.default)
+        { (action) in
+            if closureOk != nil {
+                closureOk!()
+            }
+        }
+        
+        let actionNotOk = UIAlertAction(title: "NOT OK",
+                                        style: UIAlertActionStyle.destructive)
+        { (action) in
+            if closureNotOk != nil {
+                closureNotOk!()
+            }
+        }
+        
+        alertVC.addAction(actionOk)
+        alertVC.addAction(actionNotOk)
         self.show(alertVC, sender: self)
     }
 }
