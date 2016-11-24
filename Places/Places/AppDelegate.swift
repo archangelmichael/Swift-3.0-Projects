@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  DeepLinks
+//  Places
 //
-//  Created by Radi on 9/29/16.
-//  Copyright © 2016 archangel. All rights reserved.
+//  Created by Radi on 11/24/16.
+//  Copyright © 2016 Oryx. All rights reserved.
 //
 
 import UIKit
@@ -41,24 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func application(_ app: UIApplication,
-                     open url: URL,
-                     options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let path = url.path
-        let pathComponents = url.pathComponents
-        let host = url.host
-        
-        if host == "dot" {
-            print("LOAD DOT \n params: \(path)")
-            return true
-        }
-        else if host == "user" {
-            print("LOAD USER \n params: \(path)")
-            return true
-        }
-        else {
-            return false
-        }
-    }
+
 }
 

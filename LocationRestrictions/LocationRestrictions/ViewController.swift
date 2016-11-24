@@ -165,9 +165,13 @@ extension ViewController : MKMapViewDelegate {
 extension ViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager,
                          didChangeAuthorization status: CLAuthorizationStatus) {
-        if (status == CLAuthorizationStatus.authorizedWhenInUse ||
-            status == CLAuthorizationStatus.authorizedAlways) {
+        if status == CLAuthorizationStatus.authorizedWhenInUse ||
+            status == CLAuthorizationStatus.authorizedAlways {
             print("Authorized")
+        }
+        else if status == CLAuthorizationStatus.denied ||
+            status == CLAuthorizationStatus.restricted {
+            print("Denied")
         }
         else {
             print("Not authorized")
