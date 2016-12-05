@@ -13,16 +13,61 @@ let π:CGFloat = CGFloat(M_PI)
 @IBDesignable class CounterView: UIView {
     
     @IBInspectable var maxCount: Int = 8
-    @IBInspectable var currentCount: Int = 5
     @IBInspectable var outlineColor: UIColor = UIColor.blue
     @IBInspectable var counterColor: UIColor = UIColor.orange
     @IBInspectable var arcWidth: CGFloat = 56
+    
+    @IBInspectable var currentCount: Int = 5 {
+        didSet {
+            if currentCount >= 0 && currentCount <=  maxCount {
+                //the view needs to be refreshed
+                setNeedsDisplay()
+            }
+        }
+    }
+    
+    func changeCount(by change: Int) -> Void {
+        if (change < 0 && currentCount == 0) ||
+            (change > 0 && currentCount == maxCount) {
+            return
+        }
+        
+        currentCount = currentCount + change
+    }
+    
+    func drawCounterText() -> Void {
+        let offset : CGFloat = 10.0
+        let lblXPos : CGFloat = arcWidth + offset
+        let lblYPos : CGFloat = arcWidth + offset
+        let lblWidth : CGFloat = bounds.width - 2 * lblXPos
+        let lblHeight : CGFloat = bounds.height - 2 * lblYPos
+        
+        let lblFontSize : CGFloat = lblHeight > 50 ? 40 : 30
+        
+        let textRect = CGRect(x: lblXPos,
+                              y: lblYPos,
+                              width: lblWidth,
+                              height: lblHeight)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        let attrs = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium",
+                                                 size: lblFontSize)!,
+                     NSParagraphStyleAttributeName : paragraphStyle,
+                     NSForegroundColorAttributeName : UIColor.blue]
+        
+        let counterLabel = "\( currentCount == maxCount ? "OK" : "\(currentCount)")"
+        counterLabel.draw(with: textRect,
+                          options: .usesLineFragmentOrigin,
+                          attributes: attrs,
+                          context: nil)
+    }
     
     override func draw(_ rect: CGRect) {
         
         let complete = currentCount >= maxCount
         
-        let center = CGPoint(x:bounds.width/2,
+        let center = CGPoint(x: bounds.width/2,
                              y: bounds.height/2)
         let radius: CGFloat = max(bounds.width, bounds.height)/2
         
@@ -81,5 +126,7 @@ let π:CGFloat = CGFloat(M_PI)
             outlinePath.lineWidth = strokeWidth
             outlinePath.stroke()
         }
+        
+        self.drawCounterText()
     }
 }

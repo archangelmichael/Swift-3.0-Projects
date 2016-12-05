@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var vCounter: CounterView!
+    @IBOutlet weak var btnPlus: PushButton!
+    @IBOutlet weak var btnMinus: PushButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -18,6 +22,14 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onPlus(_ sender: Any) {
+        self.vCounter.changeCount(by: 1)
+    }
+    
+    @IBAction func onMinus(_ sender: Any) {
+        self.vCounter.changeCount(by: -1)
     }
 
 
