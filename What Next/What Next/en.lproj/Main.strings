@@ -1,0 +1,18 @@
+
+/* Class = "UITextField"; placeholder = "name"; ObjectID = "5Pd-im-meB"; */
+"5Pd-im-meB.placeholder" = "name";
+
+/* Class = "UILabel"; text = "remember login"; ObjectID = "BXP-Dd-PUL"; */
+"BXP-Dd-PUL.text" = "remember login";
+
+/* Class = "UITabBarItem"; title = "Item 1"; ObjectID = "X7x-AL-JKR"; */
+"X7x-AL-JKR.title" = "Item 1";
+
+/* Class = "UITextField"; placeholder = "pass"; ObjectID = "c1O-8Y-Xk0"; */
+"c1O-8Y-Xk0.placeholder" = "pass";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "fqK-0e-ioj"; */
+"fqK-0e-ioj.normalTitle" = "Login";
+
+/* Class = "UITabBarItem"; title = "Item 2"; ObjectID = "oiE-cM-RmL"; */
+"oiE-cM-RmL.title" = "Item 2";

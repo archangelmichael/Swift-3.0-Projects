@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  What Next
+
+  Created by Radi on 2/13/17.
+  Copyright © 2017 Oryx. All rights reserved.
+*/
+
+msg_alert_bad_login = "Login failed";
+msg_alert_wrong_password = "Password is incorrect. Please try again.";
