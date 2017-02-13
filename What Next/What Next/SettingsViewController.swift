@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.btnLogout.tintColor = Constants.Colors.BLUE
+        self.btnLogout.tintColor = Constants.Colors.ORANGE
         self.btnLogout.setImage(UIImage.init(named: "logout-on")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate),
                                 for: .normal)
         self.btnLogout.setImage(UIImage.init(named: "logout-off")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate),
@@ -74,6 +74,7 @@ class SettingsViewController: UIViewController {
         
         Variables.setTheme(theme: selectedTheme)
         self.setBackgroundColor()
+        (self.tabBarController as? TabsViewController)?.setTabBarColor()
     }
     
     @IBAction func onLogout(_ sender: Any) {

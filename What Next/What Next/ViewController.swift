@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     
     func performLogin() -> Void {
         self.vLoading.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { 
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.vLoading.stopAnimating()
             self.performSegue(withIdentifier: "showTabs", sender: self)
         }

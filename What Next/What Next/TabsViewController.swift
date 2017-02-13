@@ -13,17 +13,20 @@ class TabsViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBar.tintColor = Constants.Colors.BLUE
-        
+        self.setTabBarColor()
         self.viewControllers![0].tabBarItem = UITabBarItem(title: nil,
-                                                           image: UIImage(named: "calendar-off")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal),
+                                                           image: UIImage(named: "calendar-off")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate),
                                                            selectedImage: UIImage(named: "calendar-on"))
         
         self.viewControllers![1].tabBarItem = UITabBarItem(title: nil,
-                                                          image: UIImage(named: "settings-off")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal),
+                                                          image: UIImage(named: "settings-off")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate),
                                                           selectedImage: UIImage(named: "settings-on"))
         
         
+    }
+    
+    func setTabBarColor() -> Void {
+        self.tabBar.barTintColor = Variables.backgroundColor
     }
 
     override func didReceiveMemoryWarning() {
