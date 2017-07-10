@@ -12,6 +12,7 @@
 		1942D15A1F136CD100EF06DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1942D1581F136CD100EF06DA /* Main.storyboard */; };
 		1942D15C1F136CD100EF06DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1942D15B1F136CD100EF06DA /* Assets.xcassets */; };
 		1942D15F1F136CD100EF06DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1942D15D1F136CD100EF06DA /* LaunchScreen.storyboard */; };
+		1942D18F1F138F3200EF06DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1942D18E1F138F3200EF06DA /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		1942D15E1F136CD100EF06DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1942D1601F136CD100EF06DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1942D1661F136D4300EF06DA /* KeychainAccess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeychainAccess.entitlements; sourceTree = "<group>"; };
+		1942D18E1F138F3200EF06DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1942D18F1F138F3200EF06DA /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +44,7 @@
 			children = (
 				1942D1531F136CD100EF06DA /* KeychainAccess */,
 				1942D1521F136CD100EF06DA /* Products */,
+				1942D18D1F138F3200EF06DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +68,14 @@
 				1942D1601F136CD100EF06DA /* Info.plist */,
 			);
 			path = KeychainAccess;
+			sourceTree = "<group>";
+		};
+		1942D18D1F138F3200EF06DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1942D18E1F138F3200EF06DA /* Security.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +325,7 @@
 				1942D1651F136CD100EF06DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

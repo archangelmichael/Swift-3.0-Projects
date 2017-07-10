@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    let itemKey = "sertificate-key"
+    let itemKey = "certificate-key"
     var itemValue : String?
     {
         get {
@@ -54,8 +54,8 @@ class ViewController: UIViewController {
         if resultCode != noErr {
             print("Error saving to Keychain: \(resultCode)")
             if resultCode == -25299 {
-                print("Item already exists")
                 log(text: "item already added")
+                self.onUpdate()
             }
         }
         else {
@@ -111,6 +111,36 @@ class ViewController: UIViewController {
             if resultCodeLoad == -25300 {
                 log(text: "item not found")
             }
+        }
+    }
+    
+    func onUpdate() {
+        guard let valueData = itemValue?.data(using: String.Encoding.utf8) else {
+            print("Error saving text to Keychain")
+            return
+        }
+        
+        let queryUpdate: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: itemKey as AnyObject,
+            kSecValueData as String: valueData as AnyObject,
+            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
+            kSecReturnData as String: kCFBooleanTrue,
+            kSecMatchLimit as String: kSecMatchLimitOne,
+            kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject,
+        ]
+        
+        let resultCode = SecItemUpdate(queryUpdate as CFDictionary,
+                                       [kSecValueData as String : valueData] as CFDictionary)
+        
+        if resultCode != noErr {
+            print("Error updating to Keychain: \(resultCode)")
+            if resultCode == -25299 {
+                log(text: "item not updated")
+            }
+        }
+        else {
+            log(text: "item updated")
         }
     }
     
