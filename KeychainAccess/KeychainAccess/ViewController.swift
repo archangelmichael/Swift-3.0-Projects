@@ -10,16 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    
-    let itemKey = "certificate-key"
-    var itemValue : String?
+    var accessValue : String?
     {
         get {
             return tfInput.text
         }
     }
-    
-    let keychainAccessGroupName = "P4JVA28GY3.com.oryx.shared.keychain"
     
     @IBOutlet weak var tfInput: UITextField!
     
@@ -36,111 +32,35 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onAdd(_ sender: Any) {
-        guard let valueData = itemValue?.data(using: String.Encoding.utf8) else {
-            print("Error saving text to Keychain")
-            return
+        log(text: "")
+        do {
+            try KeychainWrapper.saveKey(value: self.accessValue)
+            log(text: "update complete")
         }
-        
-        let queryAdd: [String: AnyObject] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: itemKey as AnyObject,
-            kSecValueData as String: valueData as AnyObject,
-            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
-            kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject
-        ]
-        
-        let resultCode = SecItemAdd(queryAdd as CFDictionary, nil)
-        
-        if resultCode != noErr {
-            print("Error saving to Keychain: \(resultCode)")
-            if resultCode == -25299 {
-                log(text: "item already added")
-                self.onUpdate()
-            }
-        }
-        else {
-            log(text: "item added")
+        catch let error {
+            log(text: error.localizedDescription)
         }
     }
     
     @IBAction func onDelete(_ sender: Any) {
-        let queryDelete: [String: AnyObject] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: itemKey as AnyObject,
-            kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject
-        ]
-        
-        let resultCodeDelete = SecItemDelete(queryDelete as CFDictionary)
-        
-        if resultCodeDelete != noErr {
-            print("Error deleting from Keychain: \(resultCodeDelete)")
-            if resultCodeDelete == -25300 {
-                log(text: "item already deleted")
-            }
+        log(text: "")
+        do {
+            try KeychainWrapper.deleteKey()
+            log(text: "delete complete")
         }
-        else {
-            log(text: "item deleted")
+        catch let error {
+            log(text: error.localizedDescription)
         }
     }
     
     @IBAction func onFind(_ sender: Any) {
-        let queryLoad: [String: AnyObject] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: itemKey as AnyObject,
-            kSecReturnData as String: kCFBooleanTrue,
-            kSecMatchLimit as String: kSecMatchLimitOne,
-            kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject
-        ]
-        
-        var result: AnyObject?
-        
-        let resultCodeLoad = withUnsafeMutablePointer(to: &result) {
-            SecItemCopyMatching(queryLoad as CFDictionary, UnsafeMutablePointer($0))
+        log(text: "")
+        do {
+            let password = try KeychainWrapper.loadKey()
+            log(text: "find complete \(password)")
         }
-        
-        if resultCodeLoad == noErr {
-            if let result = result as? Data,
-                let keyValue = NSString(data: result,
-                                        encoding: String.Encoding.utf8.rawValue) as String? {
-                
-                log(text: keyValue)
-            }
-        }
-        else {
-            print("Error loading from Keychain: \(resultCodeLoad)")
-            if resultCodeLoad == -25300 {
-                log(text: "item not found")
-            }
-        }
-    }
-    
-    func onUpdate() {
-        guard let valueData = itemValue?.data(using: String.Encoding.utf8) else {
-            print("Error saving text to Keychain")
-            return
-        }
-        
-        let queryUpdate: [String: AnyObject] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: itemKey as AnyObject,
-            kSecValueData as String: valueData as AnyObject,
-            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
-            kSecReturnData as String: kCFBooleanTrue,
-            kSecMatchLimit as String: kSecMatchLimitOne,
-            kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject,
-        ]
-        
-        let resultCode = SecItemUpdate(queryUpdate as CFDictionary,
-                                       [kSecValueData as String : valueData] as CFDictionary)
-        
-        if resultCode != noErr {
-            print("Error updating to Keychain: \(resultCode)")
-            if resultCode == -25299 {
-                log(text: "item not updated")
-            }
-        }
-        else {
-            log(text: "item updated")
+        catch let error {
+            log(text: error.localizedDescription)
         }
     }
     

@@ -13,6 +13,7 @@
 		1942D15C1F136CD100EF06DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1942D15B1F136CD100EF06DA /* Assets.xcassets */; };
 		1942D15F1F136CD100EF06DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1942D15D1F136CD100EF06DA /* LaunchScreen.storyboard */; };
 		1942D18F1F138F3200EF06DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1942D18E1F138F3200EF06DA /* Security.framework */; };
+		1942D1991F13985C00EF06DA /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1942D1981F13985C00EF06DA /* KeychainWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		1942D1601F136CD100EF06DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1942D1661F136D4300EF06DA /* KeychainAccess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeychainAccess.entitlements; sourceTree = "<group>"; };
 		1942D18E1F138F3200EF06DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1942D1981F13985C00EF06DA /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				1942D15B1F136CD100EF06DA /* Assets.xcassets */,
 				1942D15D1F136CD100EF06DA /* LaunchScreen.storyboard */,
 				1942D1601F136CD100EF06DA /* Info.plist */,
+				1942D1981F13985C00EF06DA /* KeychainWrapper.swift */,
 			);
 			path = KeychainAccess;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1942D1991F13985C00EF06DA /* KeychainWrapper.swift in Sources */,
 				1942D1571F136CD100EF06DA /* ViewController.swift in Sources */,
 				1942D1551F136CD100EF06DA /* AppDelegate.swift in Sources */,
 			);
