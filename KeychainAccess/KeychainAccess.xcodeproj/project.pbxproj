@@ -13,7 +13,8 @@
 		1942D15C1F136CD100EF06DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1942D15B1F136CD100EF06DA /* Assets.xcassets */; };
 		1942D15F1F136CD100EF06DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1942D15D1F136CD100EF06DA /* LaunchScreen.storyboard */; };
 		1942D18F1F138F3200EF06DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1942D18E1F138F3200EF06DA /* Security.framework */; };
-		1942D1991F13985C00EF06DA /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1942D1981F13985C00EF06DA /* KeychainWrapper.swift */; };
+		1942D1991F13985C00EF06DA /* MyKeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1942D1981F13985C00EF06DA /* MyKeychainWrapper.swift */; };
+		BB42E10D2D5123CD80C2C426 /* Pods_KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCCD5352833587949802781 /* Pods_KeychainAccess.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +27,10 @@
 		1942D1601F136CD100EF06DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1942D1661F136D4300EF06DA /* KeychainAccess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeychainAccess.entitlements; sourceTree = "<group>"; };
 		1942D18E1F138F3200EF06DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1942D1981F13985C00EF06DA /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		1942D1981F13985C00EF06DA /* MyKeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKeychainWrapper.swift; sourceTree = "<group>"; };
+		300500442EB82AF6291B4BD2 /* Pods-KeychainAccess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeychainAccess.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeychainAccess/Pods-KeychainAccess.release.xcconfig"; sourceTree = "<group>"; };
+		5CCCD5352833587949802781 /* Pods_KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		853DD60A0D23C09D66DDAF78 /* Pods-KeychainAccess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeychainAccess.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeychainAccess/Pods-KeychainAccess.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1942D18F1F138F3200EF06DA /* Security.framework in Frameworks */,
+				BB42E10D2D5123CD80C2C426 /* Pods_KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +52,7 @@
 				1942D1531F136CD100EF06DA /* KeychainAccess */,
 				1942D1521F136CD100EF06DA /* Products */,
 				1942D18D1F138F3200EF06DA /* Frameworks */,
+				5F96FB4E707B7C2A3EFE7BE3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +74,7 @@
 				1942D15B1F136CD100EF06DA /* Assets.xcassets */,
 				1942D15D1F136CD100EF06DA /* LaunchScreen.storyboard */,
 				1942D1601F136CD100EF06DA /* Info.plist */,
-				1942D1981F13985C00EF06DA /* KeychainWrapper.swift */,
+				1942D1981F13985C00EF06DA /* MyKeychainWrapper.swift */,
 			);
 			path = KeychainAccess;
 			sourceTree = "<group>";
@@ -77,8 +83,18 @@
 			isa = PBXGroup;
 			children = (
 				1942D18E1F138F3200EF06DA /* Security.framework */,
+				5CCCD5352833587949802781 /* Pods_KeychainAccess.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F96FB4E707B7C2A3EFE7BE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				853DD60A0D23C09D66DDAF78 /* Pods-KeychainAccess.debug.xcconfig */,
+				300500442EB82AF6291B4BD2 /* Pods-KeychainAccess.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1942D1631F136CD100EF06DA /* Build configuration list for PBXNativeTarget "KeychainAccess" */;
 			buildPhases = (
+				7D5B516894E201D2C7E1D482 /* [CP] Check Pods Manifest.lock */,
 				1942D14D1F136CD100EF06DA /* Sources */,
 				1942D14E1F136CD100EF06DA /* Frameworks */,
 				1942D14F1F136CD100EF06DA /* Resources */,
+				A7FE5257C4EC0A80767C7F17 /* [CP] Embed Pods Frameworks */,
+				57910C14479D57FE8885791A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -154,12 +173,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		57910C14479D57FE8885791A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeychainAccess/Pods-KeychainAccess-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D5B516894E201D2C7E1D482 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A7FE5257C4EC0A80767C7F17 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeychainAccess/Pods-KeychainAccess-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1942D14D1F136CD100EF06DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1942D1991F13985C00EF06DA /* KeychainWrapper.swift in Sources */,
+				1942D1991F13985C00EF06DA /* MyKeychainWrapper.swift in Sources */,
 				1942D1571F136CD100EF06DA /* ViewController.swift in Sources */,
 				1942D1551F136CD100EF06DA /* AppDelegate.swift in Sources */,
 			);
@@ -282,6 +349,7 @@
 		};
 		1942D1641F136CD100EF06DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 853DD60A0D23C09D66DDAF78 /* Pods-KeychainAccess.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KeychainAccess/KeychainAccess.entitlements;
@@ -297,6 +365,7 @@
 		};
 		1942D1651F136CD100EF06DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 300500442EB82AF6291B4BD2 /* Pods-KeychainAccess.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = KeychainAccess/KeychainAccess.entitlements;

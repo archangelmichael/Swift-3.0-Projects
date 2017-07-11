@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeychainWrapper: NSObject {
+class MyKeychainWrapper: NSObject {
     
     public enum KeychainError: Error {
         case noPassword
