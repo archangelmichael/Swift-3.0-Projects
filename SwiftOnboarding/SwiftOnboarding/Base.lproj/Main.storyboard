@@ -20,6 +20,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OkY-CD-ndH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VD-bq-EBI">
                                 <rect key="frame" x="142" y="309" width="90" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -28,17 +31,39 @@
                                     <action selector="onStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OPL-uN-RFj"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="C1d-hU-OPs">
+                                <rect key="frame" x="168" y="622" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKB-WF-IVs">
+                                <rect key="frame" x="326" y="625" width="33" height="30"/>
+                                <state key="normal" title="SKIP"/>
+                                <connections>
+                                    <action selector="onSkip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yfU-Jb-2jT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2VD-bq-EBI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZXB-hl-qDn"/>
+                            <constraint firstAttribute="trailing" secondItem="OkY-CD-ndH" secondAttribute="trailing" id="Mgq-ch-9LB"/>
+                            <constraint firstItem="C1d-hU-OPs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QKr-cY-GF2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C1d-hU-OPs" secondAttribute="bottom" constant="8" id="QUG-83-hvZ"/>
+                            <constraint firstAttribute="trailing" secondItem="eKB-WF-IVs" secondAttribute="trailing" constant="16" id="ROy-F8-l6M"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eKB-WF-IVs" secondAttribute="bottom" constant="12" id="Ung-6w-hCt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OkY-CD-ndH" secondAttribute="bottom" id="YtD-XG-vG3"/>
+                            <constraint firstItem="OkY-CD-ndH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bUe-1o-N2a"/>
+                            <constraint firstItem="OkY-CD-ndH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uZ1-PG-cZe"/>
+                            <constraint firstItem="2VD-bq-EBI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xV7-Q0-ANX"/>
                             <constraint firstItem="2VD-bq-EBI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xiI-gc-rGA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="vContainer" destination="OkY-CD-ndH" id="iBm-ag-Bs8"/>
+                        <outlet property="vPages" destination="C1d-hU-OPs" id="A6a-Qz-1wn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="109"/>
+            <point key="canvasLocation" x="165.59999999999999" y="108.39580209895054"/>
         </scene>
         <!--Page1 View Controller-->
         <scene sceneID="FXn-je-UhB">
@@ -61,7 +86,7 @@
         <!--Pages View Controller-->
         <scene sceneID="Zti-3S-sge">
             <objects>
-                <pageViewController storyboardIdentifier="PagesViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="26a-Ac-bSb" customClass="PagesViewController" customModule="SwiftOnboarding" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="PagesViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="26a-Ac-bSb" customClass="PagesViewController" customModule="SwiftOnboarding" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TpF-Rz-8o0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="865" y="109"/>
