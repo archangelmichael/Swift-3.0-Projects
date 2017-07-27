@@ -13,7 +13,57 @@
 		19175C581F28ABB9005F6A70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19175C571F28ABB9005F6A70 /* Assets.xcassets */; };
 		19175C5B1F28ABB9005F6A70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19175C591F28ABB9005F6A70 /* LaunchScreen.storyboard */; };
 		19175C641F28ACAE005F6A70 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19175C631F28ACAE005F6A70 /* QuartzCore.framework */; };
+		19544FF21F29EDEE0055289B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19544FF01F29EDEE0055289B /* Interface.storyboard */; };
+		19544FF41F29EDEE0055289B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19544FF31F29EDEE0055289B /* Assets.xcassets */; };
+		19544FFB1F29EDEE0055289B /* RadialProgress Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 19544FFA1F29EDEE0055289B /* RadialProgress Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		195450021F29EDEE0055289B /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195450011F29EDEE0055289B /* InterfaceController.swift */; };
+		195450041F29EDEE0055289B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195450031F29EDEE0055289B /* ExtensionDelegate.swift */; };
+		195450061F29EDEE0055289B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195450051F29EDEE0055289B /* NotificationController.swift */; };
+		195450081F29EDEE0055289B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195450071F29EDEE0055289B /* Assets.xcassets */; };
+		1954500C1F29EDEE0055289B /* RadialProgress.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 19544FEE1F29EDEE0055289B /* RadialProgress.app */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		19544FFC1F29EDEE0055289B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19175C451F28ABB9005F6A70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19544FF91F29EDEE0055289B;
+			remoteInfo = "RadialProgress Extension";
+		};
+		1954500A1F29EDEE0055289B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19175C451F28ABB9005F6A70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19544FED1F29EDEE0055289B;
+			remoteInfo = RadialProgress;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		195450101F29EDEE0055289B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				19544FFB1F29EDEE0055289B /* RadialProgress Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		195450141F29EDEE0055289B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				1954500C1F29EDEE0055289B /* RadialProgress.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		19175C4D1F28ABB9005F6A70 /* SwiftRadialProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRadialProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +74,20 @@
 		19175C5A1F28ABB9005F6A70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19175C5C1F28ABB9005F6A70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19175C631F28ACAE005F6A70 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		19175C651F29EADE005F6A70 /* SwiftRadialProgress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftRadialProgress.entitlements; sourceTree = "<group>"; };
+		19544FEE1F29EDEE0055289B /* RadialProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadialProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19544FF11F29EDEE0055289B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		19544FF31F29EDEE0055289B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		19544FF51F29EDEE0055289B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19544FFA1F29EDEE0055289B /* RadialProgress Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RadialProgress Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		195450001F29EDEE0055289B /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		195450011F29EDEE0055289B /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		195450031F29EDEE0055289B /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		195450051F29EDEE0055289B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		195450071F29EDEE0055289B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		195450091F29EDEE0055289B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		195450151F29EE4E0055289B /* RadialProgress Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "RadialProgress Extension.entitlements"; sourceTree = "<group>"; };
+		195450161F29EE570055289B /* RadialProgress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RadialProgress.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +99,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19544FF71F29EDEE0055289B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -42,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				19175C4F1F28ABB9005F6A70 /* SwiftRadialProgress */,
+				19544FEF1F29EDEE0055289B /* RadialProgress */,
+				19544FFE1F29EDEE0055289B /* RadialProgress Extension */,
 				19175C4E1F28ABB9005F6A70 /* Products */,
 				19175C621F28ACAE005F6A70 /* Frameworks */,
 			);
@@ -51,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				19175C4D1F28ABB9005F6A70 /* SwiftRadialProgress.app */,
+				19544FEE1F29EDEE0055289B /* RadialProgress.app */,
+				19544FFA1F29EDEE0055289B /* RadialProgress Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +133,7 @@
 		19175C4F1F28ABB9005F6A70 /* SwiftRadialProgress */ = {
 			isa = PBXGroup;
 			children = (
+				19175C651F29EADE005F6A70 /* SwiftRadialProgress.entitlements */,
 				19175C501F28ABB9005F6A70 /* AppDelegate.swift */,
 				19175C521F28ABB9005F6A70 /* ViewController.swift */,
 				19175C541F28ABB9005F6A70 /* Main.storyboard */,
@@ -76,6 +152,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		19544FEF1F29EDEE0055289B /* RadialProgress */ = {
+			isa = PBXGroup;
+			children = (
+				195450161F29EE570055289B /* RadialProgress.entitlements */,
+				19544FF01F29EDEE0055289B /* Interface.storyboard */,
+				19544FF31F29EDEE0055289B /* Assets.xcassets */,
+				19544FF51F29EDEE0055289B /* Info.plist */,
+			);
+			path = RadialProgress;
+			sourceTree = "<group>";
+		};
+		19544FFE1F29EDEE0055289B /* RadialProgress Extension */ = {
+			isa = PBXGroup;
+			children = (
+				195450151F29EE4E0055289B /* RadialProgress Extension.entitlements */,
+				195450011F29EDEE0055289B /* InterfaceController.swift */,
+				195450031F29EDEE0055289B /* ExtensionDelegate.swift */,
+				195450051F29EDEE0055289B /* NotificationController.swift */,
+				195450071F29EDEE0055289B /* Assets.xcassets */,
+				195450091F29EDEE0055289B /* Info.plist */,
+				19544FFF1F29EDEE0055289B /* Supporting Files */,
+			);
+			path = "RadialProgress Extension";
+			sourceTree = "<group>";
+		};
+		19544FFF1F29EDEE0055289B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				195450001F29EDEE0055289B /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,15 +195,51 @@
 				19175C491F28ABB9005F6A70 /* Sources */,
 				19175C4A1F28ABB9005F6A70 /* Frameworks */,
 				19175C4B1F28ABB9005F6A70 /* Resources */,
+				195450141F29EDEE0055289B /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1954500B1F29EDEE0055289B /* PBXTargetDependency */,
 			);
 			name = SwiftRadialProgress;
 			productName = SwiftRadialProgress;
 			productReference = 19175C4D1F28ABB9005F6A70 /* SwiftRadialProgress.app */;
 			productType = "com.apple.product-type.application";
+		};
+		19544FED1F29EDEE0055289B /* RadialProgress */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 195450111F29EDEE0055289B /* Build configuration list for PBXNativeTarget "RadialProgress" */;
+			buildPhases = (
+				19544FEC1F29EDEE0055289B /* Resources */,
+				195450101F29EDEE0055289B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19544FFD1F29EDEE0055289B /* PBXTargetDependency */,
+			);
+			name = RadialProgress;
+			productName = RadialProgress;
+			productReference = 19544FEE1F29EDEE0055289B /* RadialProgress.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		19544FF91F29EDEE0055289B /* RadialProgress Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1954500D1F29EDEE0055289B /* Build configuration list for PBXNativeTarget "RadialProgress Extension" */;
+			buildPhases = (
+				19544FF61F29EDEE0055289B /* Sources */,
+				19544FF71F29EDEE0055289B /* Frameworks */,
+				19544FF81F29EDEE0055289B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RadialProgress Extension";
+			productName = "RadialProgress Extension";
+			productReference = 19544FFA1F29EDEE0055289B /* RadialProgress Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -110,6 +255,34 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = P4JVA28GY3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					19544FED1F29EDEE0055289B = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = P4JVA28GY3;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					19544FF91F29EDEE0055289B = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = P4JVA28GY3;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -127,6 +300,8 @@
 			projectRoot = "";
 			targets = (
 				19175C4C1F28ABB9005F6A70 /* SwiftRadialProgress */,
+				19544FED1F29EDEE0055289B /* RadialProgress */,
+				19544FF91F29EDEE0055289B /* RadialProgress Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -142,6 +317,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19544FEC1F29EDEE0055289B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19544FF41F29EDEE0055289B /* Assets.xcassets in Resources */,
+				19544FF21F29EDEE0055289B /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19544FF81F29EDEE0055289B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				195450081F29EDEE0055289B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -154,7 +346,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19544FF61F29EDEE0055289B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				195450061F29EDEE0055289B /* NotificationController.swift in Sources */,
+				195450041F29EDEE0055289B /* ExtensionDelegate.swift in Sources */,
+				195450021F29EDEE0055289B /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19544FFD1F29EDEE0055289B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19544FF91F29EDEE0055289B /* RadialProgress Extension */;
+			targetProxy = 19544FFC1F29EDEE0055289B /* PBXContainerItemProxy */;
+		};
+		1954500B1F29EDEE0055289B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19544FED1F29EDEE0055289B /* RadialProgress */;
+			targetProxy = 1954500A1F29EDEE0055289B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		19175C541F28ABB9005F6A70 /* Main.storyboard */ = {
@@ -171,6 +386,14 @@
 				19175C5A1F28ABB9005F6A70 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		19544FF01F29EDEE0055289B /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19544FF11F29EDEE0055289B /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -273,12 +496,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftRadialProgress/SwiftRadialProgress.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = P4JVA28GY3;
 				INFOPLIST_FILE = SwiftRadialProgress/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oryx.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -287,13 +514,90 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftRadialProgress/SwiftRadialProgress.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = P4JVA28GY3;
 				INFOPLIST_FILE = SwiftRadialProgress/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oryx.testapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		1954500E1F29EDEE0055289B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "RadialProgress Extension/RadialProgress Extension.entitlements";
+				DEVELOPMENT_TEAM = P4JVA28GY3;
+				INFOPLIST_FILE = "RadialProgress Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oryx.testapp.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		1954500F1F29EDEE0055289B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "RadialProgress Extension/RadialProgress Extension.entitlements";
+				DEVELOPMENT_TEAM = P4JVA28GY3;
+				INFOPLIST_FILE = "RadialProgress Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oryx.testapp.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		195450121F29EDEE0055289B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RadialProgress/RadialProgress.entitlements;
+				DEVELOPMENT_TEAM = P4JVA28GY3;
+				IBSC_MODULE = RadialProgress_Extension;
+				INFOPLIST_FILE = RadialProgress/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oryx.testapp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		195450131F29EDEE0055289B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RadialProgress/RadialProgress.entitlements;
+				DEVELOPMENT_TEAM = P4JVA28GY3;
+				IBSC_MODULE = RadialProgress_Extension;
+				INFOPLIST_FILE = RadialProgress/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oryx.testapp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
 			name = Release;
 		};
@@ -316,6 +620,25 @@
 				19175C611F28ABB9005F6A70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1954500D1F29EDEE0055289B /* Build configuration list for PBXNativeTarget "RadialProgress Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1954500E1F29EDEE0055289B /* Debug */,
+				1954500F1F29EDEE0055289B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		195450111F29EDEE0055289B /* Build configuration list for PBXNativeTarget "RadialProgress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				195450121F29EDEE0055289B /* Debug */,
+				195450131F29EDEE0055289B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

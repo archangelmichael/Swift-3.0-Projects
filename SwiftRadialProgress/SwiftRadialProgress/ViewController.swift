@@ -15,59 +15,15 @@ class ViewController: UIViewController {
     let MAX_VALUE : UInt32 = 180;
     let MIN_VALUE = 0;
     
-    var progressLayer: CAShapeLayer?;
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func ClearSublayers(view : UIView) {
+        view.layer.sublayers?.removeAll()
     }
     
-    func SetRandomProgress() {
-        if progressLayer != nil {
-            progressLayer!.removeFromSuperlayer()
-        }
-        
-        
-        
-        
-        let value = arc4random_uniform(MAX_VALUE)
-        let progress = CGFloat(value)/CGFloat(MAX_VALUE)
-        
-        vProgress.layoutIfNeeded()
-        
-        let centerPoint = CGPoint (x: vProgress.bounds.width / 2,
-                                   y: vProgress.bounds.width / 2);
-        let circleRadius : CGFloat = vProgress.bounds.width / 2 * 0.83;
-        
-        
-        
-        let circlePath = UIBezierPath(arcCenter: centerPoint,
-                                      radius: circleRadius,
-                                      startAngle: CGFloat(-0.5 * Double.pi),
-                                      endAngle: CGFloat(1.5 * Double.pi),
-                                      clockwise: true    );
-        
-        
-        progressLayer = CAShapeLayer ();
-        progressLayer?.path = circlePath.cgPath;
-        progressLayer?.strokeColor = UIColor.green.cgColor;
-        progressLayer?.fillColor = UIColor.clear.cgColor;
-        progressLayer?.lineWidth = 10;
-        progressLayer?.strokeStart = 0;
-        progressLayer?.strokeEnd = 0.22;
-        
-        vProgress.layer.addSublayer(progressLayer!);
-        progressLayer?.strokeEnd = progress;
-        
-        
-    }
-    
-    func SetProgressAnimated() {
+    func GetAnimatedProgressLayer() -> CAShapeLayer {
         let circle = CAShapeLayer()
         let centerPoint = CGPoint (x: vProgress.bounds.width / 2,
                                    y: vProgress.bounds.width / 2);
@@ -76,10 +32,12 @@ class ViewController: UIViewController {
         
         let value = arc4random_uniform(MAX_VALUE)
         let progress = CGFloat(value)/CGFloat(MAX_VALUE)
+        let progressInDegrees : CGFloat = 360 * progress
         
-        let clockwise = true
-        let startAngle = 90
-        let endAngle = clockwise ? startAngle + 360 : startAngle - 360
+        let clockwise = false
+        let startAngle : CGFloat = 90
+        
+        let endAngle = clockwise ? startAngle + progressInDegrees : startAngle - progressInDegrees
         
         let startAngleRad = startAngle.degreesToRadians
         let endAngleRad = endAngle.degreesToRadians
@@ -88,32 +46,30 @@ class ViewController: UIViewController {
                                       radius: circleRadius,
                                       startAngle: CGFloat(startAngleRad),
                                       endAngle: CGFloat(endAngleRad),
-                                      clockwise: clockwise );
+                                      clockwise: clockwise);
 
         circle.path = circlePath.cgPath
         circle.fillColor = UIColor.clear.cgColor
         circle.strokeColor = UIColor.green.cgColor
         circle.lineWidth = 20
-        circle.cornerRadius = 10
+        circle.lineCap = "round"
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.duration = 2;
+        animation.duration = 1;
         animation.isRemovedOnCompletion = false;
         animation.fromValue = 0;
         animation.toValue = 1;
         animation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)
         
         circle.add(animation, forKey: "drawCircleAnimation")
-        vProgress.layer.sublayers?.removeAll()
-        // REMOVE FROM SUPERLAYER
-        vProgress.layer.addSublayer(circle)
+        return circle;
     }
 
     @IBAction func onDraw(_ sender: Any) {
-//        SetRandomProgress()
-         SetProgressAnimated()
+        self.ClearSublayers(view: vProgress)
+        let animLayer = self.GetAnimatedProgressLayer()
+        vProgress.layer.addSublayer(animLayer)
     }
-
 }
 
 extension Int {
