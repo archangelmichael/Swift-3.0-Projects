@@ -7,15 +7,34 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+//    var session: WCSession? {
+//        didSet {
+//            if let session = session {
+//                session.delegate = self
+//                session.activate()
+//            }
+//        }
+//    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        if WCSession.isSupported() {
+//            session = WCSession.default()
+//        }
+        
+        if WCSession.isSupported() {
+            let wcsession = WCSession.default()
+            wcsession.delegate = self
+            wcsession.activate()
+        }
+        
         return true
     }
 
@@ -40,7 +59,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
-
+extension AppDelegate: WCSessionDelegate {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print(message)
+        if let url = message["url"] as? String {
+            UIApplication.shared.openURL(NSURL(string: url)! as URL)
+        }
+    }
+    
+    func session(_ session: WCSession,
+                 didReceiveMessage message: [String : Any],
+                 replyHandler: @escaping ([String : Any]) -> Void) {
+        print(message)
+        if let url = message["url"] as? String {
+            UIApplication.shared.openURL(NSURL(string: url)! as URL)
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    @available(iOS 9.3, *)
+    func session(_ session: WCSession,
+                 activationDidCompleteWith activationState: WCSessionActivationState,
+                 error: Error?) {
+        print("APP ACTIVATION ERROR \(String(describing: error?.localizedDescription))")
+    }
 }
 
